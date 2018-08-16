@@ -1,0 +1,13 @@
+apt-get install python-smbus
+apt-get install i2c-tools
+apt-get install python-dev
+apt-get install wiringpi
+apt-get install libi2c-dev
+
+
+BMP180
+git clone https://github.com/adafruit/Adafruit_Python_BMP.git
+cd Adafruit_Python_BMP/
+wget https://pypi.python.org/packages/source/s/setuptools/setuptools-3.5.1.zip
+python setup.py  install
+
