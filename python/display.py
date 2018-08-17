@@ -1,5 +1,6 @@
 #!/usr/bin/python
 
+import os
 import time
 import smbus
 from bmp180.BMP180 import BMP180
@@ -94,8 +95,10 @@ def print_lcd(x, y, str):
 
 if __name__ == '__main__':
     init_lcd()
+    cnt=0
     while 1:
         dt=time.strftime("%Y-%m-%d %H:%M", time.localtime())
+        tsp=time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
         temp = bmp.read_temperature()
         pressure = bmp.read_pressure()
         altitude = bmp.read_altitude()
@@ -103,3 +106,10 @@ if __name__ == '__main__':
         print_lcd(0, 1, str(temp)+" C")
         print_lcd(7, 1, str(pressure)+"hPa")
         time.sleep(1)
+        cnt+=1
+        if cnt>360:
+            curlstring='curl --request POST --header "U-ApiKey:6a9c533112aaa32197717edd5d07d7dc" http://api.yeelink.net/v1.0/device/355423/sensor/402027/datapoints --data '
+            datastring='\"{\\"timestamp\\":\\"'+str(tsp)+'\\",\\"value\\":'+str(temp)+'}\"'
+            os.system(curlstring+datastring)
+            print curlstring,datastring 
+            cnt=0

@@ -6,6 +6,15 @@ apt-get install python-dev
 apt-get install wiringpi
 apt-get install libi2c-dev
 
+apt-get install git-core
+apt-get install tree
+apt-get install python-pip
+apt-get install curl
+apt-get install libcurl4-openssl-dev
+apt-get install openssl
+
+apt-get install nload
+
 
 BMP180
 git clone https://github.com/adafruit/Adafruit_Python_BMP.git
@@ -13,3 +22,5 @@ cd Adafruit_Python_BMP/
 wget https://pypi.python.org/packages/source/s/setuptools/setuptools-3.5.1.zip
 python setup.py  install
 
+
+gcc -o testlcd tt.c -lwiringPi
