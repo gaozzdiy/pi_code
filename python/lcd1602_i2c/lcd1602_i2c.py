@@ -90,4 +90,3 @@ class lcd1602_i2c(object):
            self.LCD_BGLIGHT=0x08
        else : 
            self.LCD_BGLIGHT=0x00
-       print self.LCD_BGLIGHT
