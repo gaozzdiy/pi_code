@@ -1,78 +1,74 @@
-#!/usr/bin/python
+#/usr/bin/python
 
 import time
 import smbus
 
 BUS = smbus.SMBus(1)
+
 LCD_ADDR = 0x3F
-LCD_BGLIGHT =0x08
 
-#LCD_ADDR = 0x3F sudo i2cdetect -y -a 0
-
-def send_command(comm):
+class lcd1602_i2c(object):
+  LCD_BGLIGHT =0x08
+  def send_command(self, comm):
         # Send bit7-4 firstly
         buf = comm & 0xF0
         buf |= 0x04               # RS = 0, RW = 0, EN = 1
-        buf |= LCD_BGLIGHT        # set bglight
+        buf |= self.LCD_BGLIGHT        # Set light
         BUS.write_byte(LCD_ADDR ,buf)
         time.sleep(0.002)
         buf &= 0xFB               # Make EN = 0
-        buf |= LCD_BGLIGHT        # set bglight
+        buf |= self.LCD_BGLIGHT        # Set light
         BUS.write_byte(LCD_ADDR ,buf)
         
         # Send bit3-0 secondly
         buf = (comm & 0x0F) << 4
         buf |= 0x04               # RS = 0, RW = 0, EN = 1
-        buf |= LCD_BGLIGHT        # set bglight
+        buf |= self.LCD_BGLIGHT        # Set light
         BUS.write_byte(LCD_ADDR ,buf)
         time.sleep(0.002)
         buf &= 0xFB               # Make EN = 0
-        buf |= LCD_BGLIGHT        # set bglight
+        buf |= self.LCD_BGLIGHT        # Set light
         BUS.write_byte(LCD_ADDR ,buf)
 
-def send_data(data):
+  def send_data(self, data):
         # Send bit7-4 firstly
         buf = data & 0xF0
         buf |= 0x05               # RS = 1, RW = 0, EN = 1
-        buf |= LCD_BGLIGHT        # set bglight
+        buf |= self.LCD_BGLIGHT        # Set light
         BUS.write_byte(LCD_ADDR ,buf)
         time.sleep(0.002)
         buf &= 0xFB               # Make EN = 0
-        buf |= LCD_BGLIGHT        # set bglight
+        buf |= self.LCD_BGLIGHT        # Set light
         BUS.write_byte(LCD_ADDR ,buf)
         
         # Send bit3-0 secondly
         buf = (data & 0x0F) << 4
         buf |= 0x05               # RS = 1, RW = 0, EN = 1
-        buf |= LCD_BGLIGHT        # set bglight
+        buf |= self.LCD_BGLIGHT        # Set light
         BUS.write_byte(LCD_ADDR ,buf)
         time.sleep(0.002)
         buf &= 0xFB               # Make EN = 0
-        buf |= LCD_BGLIGHT        # set bglight
+        buf |= self.LCD_BGLIGHT        # Set light
         BUS.write_byte(LCD_ADDR ,buf)
 
 
-def init_lcd():
-        try:
-                send_command(0x38) # Must initialize to 8-line mode at first
+  def __init__(self):
+                self.send_command(0x38) # Must initialize to 8-line mode at first
                 time.sleep(0.005)
-                send_command(0x32) # Then initialize to 4-line mode
+                self.send_command(0x32) # Then initialize to 4-line mode
                 time.sleep(0.005)
-                send_command(0x28) # 2 Lines & 5*7 dots
+                self.send_command(0x28) # 2 Lines & 5*7 dots
                 time.sleep(0.005)
-                send_command(0x0C) # Enable display without cursor
+                self.send_command(0x0C) # Enable display without cursor
                 time.sleep(0.005)
-                send_command(0x01) # Clear Screen
-        except:
-                return False
-        else:
-                return True
+                self.send_command(0x01) # Clear Screen
+                self.light_lcd(1) # open bglight for Screen
 
-def clear_lcd():
-        send_command(0x01) # Clear Screen
+  def clear_lcd(self):
+        self.send_command(0x01) # Clear Screen
         time.sleep(1)
 
-def print_lcd(x, y, str):
+  def print_lcd(self, x, y, str):
         if x < 0:
                 x = 0
         if x > 15:
@@ -84,15 +80,14 @@ def print_lcd(x, y, str):
 
         # Move cursor
         addr = 0x80 + 0x40 * y + x
-        send_command(addr)
+        self.send_command(addr)
         
         for chr in str:
-                send_data(ord(chr))
+                self.send_data(ord(chr))
 
-if __name__ == '__main__':
-    while 1:
-        init_lcd()
-        dt=time.strftime("%m-%d %H:%M", time.localtime())
-        print_lcd(0, 0, dt)
-        print_lcd(0, 1, 'first test!!!')
-        time.sleep(1)
+  def light_lcd(self,stat):
+       if stat :
+           self.LCD_BGLIGHT=0x08
+       else : 
+           self.LCD_BGLIGHT=0x00
+       print self.LCD_BGLIGHT
