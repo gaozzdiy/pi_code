@@ -24,3 +24,12 @@ python setup.py  install
 
 
 gcc -o testlcd tt.c -lwiringPi
+
+
+
+git push -u origin master
+git commit
+git status
+git add
+git add *
+git commit -a
