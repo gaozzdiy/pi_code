@@ -35,8 +35,10 @@ def getIlluminance():
     bus.write_byte(__DEV_ADDR,__CMD_THRES2)
     time.sleep(0.2)
     res=bus.read_word_data(__DEV_ADDR,0)
+    print res
     #read_word_data
     res=((res>>8)&0xff)|(res<<8)&0xff00
+    print res
     res=round(res/(2*1.2),2)
     result="光照强度: "+str(res)+"lx"
     return result
