@@ -1,0 +1,1000 @@
+ 1005  ls
+ 1006  cd Raspberry-Pi-Code/
+ 1007  ls
+ 1008  cd DHT22/
+ 1009  ls
+ 1010  ls -la
+ 1011  ./dht 22 4
+ 1012  vim dht.c
+ 1013  rm dht
+ 1014  ls
+ 1015  make
+ 1016  ls
+ 1017  rm dht
+ 1018  rm dht.o
+ 1019  ls
+ 1020  gcc dht.c -o dht -std=uni99 -I. -lbcm2835
+ 1021  gcc dht.c -o dht -std=unc99 -I. -lbcm2835
+ 1022  gcc dht.c -o dht -std=gun99 -I. -lbcm2835
+ 1023  gcc dht.c -o dht -std=gnu99 -I. -lbcm2835
+ 1024  ./dht 22 4
+ 1025  cd /data
+ 1026  cd git
+ 1027  cd python/
+ 1028  ls
+ 1029  vim display.py
+ 1030  ps -ef|grep dis
+ 1031  kill 699
+ 1032  nohup python display.py > /dev/null &
+ 1033  vim display.py
+ 1034  ps -ef|grep dis
+ 1035  kill 862
+ 1036  nohup python display.py > /dev/null &
+ 1037  python display.py 
+ 1038  vim display.py
+ 1039  python display.py 
+ 1040  vim display.py
+ 1041  nohup python display.py > /dev/null &
+ 1042  python display.py 
+ 1043  vim display.py
+ 1044  python display.py 
+ 1045  vim display.py
+ 1046  cat /sys/class/thermal/thermal_zone0/temp
+ 1047  python display.py 
+ 1048  vim cpu_temp.py
+ 1049  python cpu_temp.py 
+ 1050  vim display.py
+ 1051  vim cpu_temp.py 
+ 1052  python cpu_temp.py 
+ 1053  vim cpu_temp.py 
+ 1054  python cpu_temp.py 
+ 1055  vim cpu_temp.py 
+ 1056  python cpu_temp.py 
+ 1057  :q
+ 1058  ls
+ 1059  vim display.py
+ 1060  python display.py 
+ 1061  vim display.py
+ 1062  python display.py 
+ 1063  vim display.py
+ 1064  python display.py 
+ 1065  vim display.py
+ 1066  python display.py 
+ 1067  vim cpu_temp.py 
+ 1068  python cpu_temp.py 
+ 1069  vim display.py
+ 1070  python display.py 
+ 1071  vim display.py
+ 1072  python display.py 
+ 1073  vim display.py
+ 1074  python display.py 
+ 1075  nohup python display.py > /dev/null &
+ 1076  vim display.py
+ 1077  ps -ef|grep dis
+ 1078  kill 1269
+ 1079  nohup python display.py > /dev/null &
+ 1080  vim display.py
+ 1081  ps -ef|grep dis
+ 1082  kill 1326
+ 1083  nohup python display.py > /dev/null &
+ 1084  vim display.py
+ 1085  python display.py 
+ 1086  ps -ef|grep dis
+ 1087  kill 1422
+ 1088  nohup python display.py > /dev/null &
+ 1089  pip install -U pip
+ 1090  exit
+ 1091  cd /etc
+ 1092  dir
+ 1093  cd network/
+ 1094  dir
+ 1095  ls
+ 1096  ll
+ 1097  ip -4 -o a
+ 1098  cd ..
+ 1099  cd wpa_supplicant/
+ 1100  dir
+ 1101  #ls
+ 1102  vim wpa_supplicant.conf 
+ 1103  ip -4 -o a
+ 1104  ifconfig
+ 1105  ifup wlan0
+ 1106  ifddown wlan0
+ 1107  ifdown wlan0
+ 1108  ifddown wlan0
+ 1109  ifup wlan0
+ 1110  ip -4 -o a
+ 1111  ipconfig
+ 1112  ifconfig
+ 1113  ls
+ 1114  vim wpa_supplicant.conf 
+ 1115  ifcdown wlan0
+ 1116  ifdown wlan0
+ 1117  ifup wlan0
+ 1118  ifconfig
+ 1119  ls
+ 1120  pip install opencv
+ 1121  pip install opencv-python
+ 1122  pip install opencv_python
+ 1123  pip install python-opencv
+ 1124  pip install python_opencv
+ 1125  yum list 
+ 1126  uname -a
+ 1127  apt-get 
+ 1128  apt-get list
+ 1129  apt-get check
+ 1130  apg-get python3
+ 1131  apg-get install python3
+ 1132  apt-get install python3
+ 1133  pip install opencv_python
+ 1134  pip install opencv_python2
+ 1135  pip install opencv2_python
+ 1136  pip list
+ 1137  ls
+ 1138  ls -la
+ 1139  wget https://github.com/opencv/opencv/archive/4.1.2.tar.gz
+ 1140  ls
+ 1141  tar xzvf 4.1.2.tar.gz 
+ 1142  dir
+ 1143  cd opencv-4.1.2/
+ 1144  dir
+ 1145  ls
+ 1146  cd 3rdparty/
+ 1147  dir
+ 1148  cd ..
+ 1149  dir
+ 1150  cd cmake/
+ 1151  dir
+ 1152  cd ..
+ 1153  dir
+ 1154  mkdir ./release
+ 1155  cd ./release/
+ 1156  cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/usr/local -D BUILD_NEW_PYTHON_SUPPORT=ON -D BUILD_EXAMPLES=ON ..
+ 1157  apt-get install cmake
+ 1158  apt-get install cmake --fix-missing
+ 1159  apt-get update --fix
+ 1160  apt-get install cmake
+ 1161  cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/usr/local -D BUILD_NEW_PYTHON_SUPPORT=ON -D BUILD_EXAMPLES=ON ..
+ 1162  apt install openjdk-8-jdk
+ 1163  lsb_release 
+ 1164  lsb_release -a
+ 1165  reboot
+ 1166  init 0
+ 1167  pip install opencv
+ 1168  pip install opencv_python
+ 1169  pip instll python_opencv
+ 1170  pip install python_opencv
+ 1171  pip install python_opencv2
+ 1172  pip install opencv-python
+ 1173  pip install opencv_python
+ 1174  pip install opencv_python2
+ 1175  pip install opencv-python2
+ 1176  pip2 install opencv-python
+ 1177  python -m pip install opencv-python
+ 1178  pip install opencv-python
+ 1179  python -m pip install opencv-python
+ 1180  apt-get install libgtk2.0-dev
+ 1181  apt-get update
+ 1182  apt-get install libgtk2.0-dev
+ 1183  pip list
+ 1184  pip install numpy
+ 1185  pip install matplotlib
+ 1186  pip install opencv_python
+ 1187  pip install opencv-python
+ 1188  df
+ 1189  df -h
+ 1190  apt-get install build-essential
+ 1191  apt-get install cmake git libgtk2.0-dev pkg-config libavcodec-dev libavformat-dev libswscale-dev
+ 1192  apt-get install cmake git libgtk2.0-dev pkg-config libavcodec-dev libavformat-dev libswscale-dev
+ 1193  wget http://mirrordirector.raspbian.org/raspbian/pool/main/g/git/git_2.1.4-2.1+deb8u7_armhf.deb
+ 1194  apt-get install cmake git libgtk2.0-dev pkg-config libavcodec-dev libavformat-dev libswscale-dev
+ 1195  apt-get
+ 1196  apt-get upgrade
+ 1197  apt-get clean
+ 1198  apt-get install cmake git libgtk2.0-dev pkg-config libavcodec-dev libavformat-dev libswscale-dev
+ 1199  apt-get updte
+ 1200  apt-get update
+ 1201  apt-get install cmake git libgtk2.0-dev pkg-config libavcodec-dev libavformat-dev libswscale-dev
+ 1202  wget http://mirrordirector.raspbian.org/raspbian/pool/main/g/git/git_2.1.4-2.1+deb8u7_armhf.deb
+ 1203  ls
+ 1204  dpkg -i git_2.1.4-2.1+deb8u7_armhf.deb 
+ 1205  ls
+ 1206  rm -rf git_2.1.4-2.1+deb8u7_armhf.deb.1
+ 1207  apt-get upgrade git
+ 1208  dpkg -i git_2.1.4-2.1+deb8u7_armhf.deb 
+ 1209  apt-get update
+ 1210  apt-get upgrade
+ 1211  wget http://mirrordirector.raspbian.org/raspbian/pool/main/g/git/git_2.1.4-2.1+deb8u7_armhf.deb
+ 1212  ls
+ 1213  ll
+ 1214  dpkg -i git_2.1.4-2.1+deb8u7_armhf.deb
+ 1215  apt-get upgrade
+ 1216  wget http://mirrordirector.raspbian.org/raspbian/pool/main/g/git/git_2.1.4-2.1+deb8u7_armhf.deb
+ 1217  ls
+ 1218  ll
+ 1219  rm git_2.1.4-2.1+deb8u7_armhf.deb*
+ 1220  wget http://mirrordirector.raspbian.org/raspbian/pool/main/g/git/git_2.1.4-2.1+deb8u7_armhf.deb
+ 1221  ls
+ 1222  dpkg -i git_2.1.4-2.1+deb8u7_armhf.deb 
+ 1223  apt-get upgrade
+ 1224  wget http://mirrordirector.raspbian.org/raspbian/pool/main/p/python2.7/libpython2.7-stdlib_2.7.9-2+deb8u5_armhf.deb
+ 1225  ls
+ 1226  dkpg -i libpython2.7-stdlib_2.7.9-2+deb8u5_armhf.deb 
+ 1227  dpkg -i libpython2.7-stdlib_2.7.9-2+deb8u5_armhf.deb 
+ 1228  apt-get install libpython2.7-minimal
+ 1229  apt-get clean
+ 1230  apt-get upgrade
+ 1231  apt-get upgrade -f
+ 1232  apt-get upgrade
+ 1233  pip install opencv-python
+ 1234  apt-get install cmake git libgtk2.0-dev pkg-config libavcodec-dev libavformat-dev libswscale-dev
+ 1235  ls
+ 1236  wget http://mirrordirector.raspbian.org/raspbian/pool/main/o/opus/libopus0_1.1-2_armhf.deb
+ 1237  ls
+ 1238  dpkg -i libopus0_1.1-2_armhf.deb
+ 1239  apt-get install cmake git libgtk2.0-dev pkg-config libavcodec-dev libavformat-dev libswscale-dev
+ 1240  apt-get install python-dev python-numpy libtbb2 libtbb-dev libjpeg-dev libpng-dev libtiff-dev libjasper-dev libdc1394-22-dev
+ 1241  apt-get install python-dev python-numpy libtbb2 libtbb-dev
+ 1242  ls
+ 1243  cd opencv-4.1.2/
+ 1244  s
+ 1245  ls
+ 1246  cd release/
+ 1247  ls
+ 1248  cmake -D CMAKE_BUILD_TYPE=Release -D CMAKE_INSTALL_PREFIX=/usr/local ..
+ 1249  cmake 
+ 1250  cmake --help
+ 1251  cmake
+ 1252  cmake -D CMAKE_BUILD_TYPE=Release -D CMAKE_INSTALL_PREFIX=/usr/local ..
+ 1253  apt-get install libtbb2
+ 1254  apt-get install libtbb
+ 1255  apt-get install libtbb2
+ 1256  find / -name '*libtbb*'
+ 1257  find / -name '*libt*'
+ 1258  apt-get install libtbb2
+ 1259  ls /dev
+ 1260  lsusb
+ 1261  apt-get install fswebcam
+ 1262  lsusb
+ 1263  ls /dev/v*
+ 1264  fswebcam
+ 1265  lsusb
+ 1266  ls /dev
+ 1267  fswebcam /dev/vc-cma ~/img.jpg
+ 1268  apt-get install ca-certificates
+ 1269  rpi-update
+ 1270  rpi-updat
+ 1271  ls /dev
+ 1272  ls /dev|grep vi
+ 1273  init 6
+ 1274  apt-get rzsz
+ 1275  apt-get install rzsz
+ 1276  apt-get install szrz
+ 1277  apt-get install lrzsz
+ 1278  ls
+ 1279  sz img.jpg
+ 1280  ls
+ 1281  apt-get install monitor
+ 1282  apt-get install motion
+ 1283  vim /etc/motion/motion.conf 
+ 1284  motion
+ 1285  ls
+ 1286  vim /etc/apt/sources.list
+ 1287  apt-get update
+ 1288  apt-get upgrade
+ 1289  apt-get update
+ 1290  ls
+ 1291  apt-get install libopencv-dev
+ 1292  apt-get install python-opencv
+ 1293  python -V
+ 1294  python
+ 1295  ls
+ 1296  mkdir ~/.pip
+ 1297  cd ~
+ 1298  dir
+ 1299  ls -la
+ 1300  cd .pip
+ 1301  ls
+ 1302  vim pip.conf
+ 1303  gpio readall
+ 1304  vcgencmd get_camera
+ 1305  vim /etc/modules
+ 1306  vcgencmd get_camera
+ 1307  vim /etc/modules
+ 1308  vcgencmd get_camera
+ 1309  raspistill -o image.jpg
+ 1310  vim /etc/login.defs
+ 1311  df -h
+ 1312  w
+ 1313  df -h
+ 1314  gpio  readall
+ 1315  exit
+ 1316  cd git
+ 1317  dir
+ 1318  ls
+ 1319  historty|grep git
+ 1320  history|grep git
+ 1321  git status
+ 1322  ls
+ 1323  mkdir minex
+ 1324  cd minex
+ 1325  vim minex.py
+ 1326  python minex.py 
+ 1327  vim minex.py
+ 1328  python minex.py 
+ 1329  ls
+ 1330  vim minex.py 
+ 1331  python minex.py 
+ 1332  python
+ 1333  ls
+ 1334  vim minex.py 
+ 1335  python minex.py 
+ 1336  ls
+ 1337  vim minex.py 
+ 1338  python minex.py 
+ 1339  ls
+ 1340  vim minex.py 
+ 1341  python minex.py 
+ 1342  vim minex.py 
+ 1343  python minex.py 
+ 1344  vim minex.py 
+ 1345  python minex.py 
+ 1346  python 
+ 1347  ls
+ 1348  fswebcam /dev/video0 image.jpg
+ 1349  fswebcam /dev/video0 ./image.jpg
+ 1350  ls
+ 1351  cat image.jpg 
+ 1352  ls
+ 1353  rm image.jpg 
+ 1354  cat /etc/modules
+ 1355  ls
+ 1356  vim minex.py 
+ 1357  python minex.py 
+ 1358  vim minex.py 
+ 1359  python minex.py 
+ 1360  ls
+ 1361  vim minex.py 
+ 1362  python minex.py 
+ 1363  vim minex.py 
+ 1364  python minex.py 
+ 1365  vim minex.py 
+ 1366  python minex.py 
+ 1367  vim minex.py 
+ 1368  python minex.py 
+ 1369  ls
+ 1370  vim minex.py 
+ 1371  python minex.py 
+ 1372  vim minex.py 
+ 1373  python minex.py 
+ 1374  vim minex.py 
+ 1375  python minex.py 
+ 1376  vim minex.py 
+ 1377  python minex.py 
+ 1378  vim minex.py 
+ 1379  python minex.py 
+ 1380  vim minex.py 
+ 1381  python minex.py 
+ 1382  vim minex.py 
+ 1383  python minex.py 
+ 1384  vim minex.py 
+ 1385  python minex.py 
+ 1386  vim minex.py 
+ 1387  python minex.py 
+ 1388  ls
+ 1389  cd ..
+ 1390  git status
+ 1391  git add 
+ 1392  git add .
+ 1393  git status
+ 1394  git commit -m "minex program simple commit"
+ 1395  git pull
+ 1396  ls
+ 1397  git status
+ 1398  git add
+ 1399  git add .
+ 1400  git status
+ 1401  git push
+ 1402  ls
+ 1403  cd python
+ 1404  ls
+ 1405  vim test.py 
+ 1406  ls
+ 1407  vim display.py
+ 1408  cd ..
+ 1409  ls
+ 1410  cd minex/
+ 1411  ls
+ 1412  vim minex.py 
+ 1413  python minex.py 
+ 1414  vim minex.py 
+ 1415  python minex.py 
+ 1416  vim minex.py 
+ 1417  python minex.py 
+ 1418  ls /var/log/
+ 1419  rm /var/log/minex.py.lock 
+ 1420  python minex.py 
+ 1421  vim minex.py 
+ 1422  python minex.py 
+ 1423  rm /var/log/minex.py.lock 
+ 1424  python minex.py 
+ 1425  rm /var/log/minex.py.lock 
+ 1426  vim minex.py 
+ 1427  python minex.py 
+ 1428  vim minex.py 
+ 1429  python minex.py 
+ 1430  ls
+ 1431  git status
+ 1432  git commit -a "add gpio"
+ 1433  git commit -a"add gpio"
+ 1434  git status
+ 1435  git add 
+ 1436  git add .
+ 1437  git status
+ 1438  git push
+ 1439  ls
+ 1440  vim minex.py 
+ 1441  init 0
+ 1442  raspi-config
+ 1443  ls /dev
+ 1444  init 6
+ 1445  ls
+ 1446  raspistill -o test.jpg
+ 1447  ls
+ 1448  ls /dev
+ 1449  raspistill
+ 1450  raspistill -o test2.jpg
+ 1451  ls
+ 1452  sz test.jpg
+ 1453  ls
+ 1454  cd /data
+ 1455  cd git
+ 1456  cd minex/
+ 1457  ls
+ 1458  python minex.py 
+ 1459  ls /dev
+ 1460  modprobe bcm2835-v4l2
+ 1461  ls vc-cma
+ 1462  ls /dev/vc-cma
+ 1463  ls
+ 1464  cd /dev
+ 1465  ls
+ 1466  ll
+ 1467  cd /
+ 1468  cd data
+ 1469  ls
+ 1470  cd git
+ 1471  cd minex/
+ 1472  ls
+ 1473  python
+ 1474  python minex.py 
+ 1475  ls
+ 1476  raspistill -o test2.jpg
+ 1477  ls
+ 1478  rm test2.jpg 
+ 1479  ls
+ 1480  ls /dev
+ 1481  python minex.py 
+ 1482  vim minex.py 
+ 1483  python minex.py 
+ 1484  vim minex.py 
+ 1485  python minex.py 
+ 1486  vim minex.py 
+ 1487  python minex.py 
+ 1488  raspistill -o test2.jpg
+ 1489  ls
+ 1490  rm test2.jpg 
+ 1491  ls
+ 1492  vim minex.py 
+ 1493  raspistill -o test2.jpg
+ 1494  b
+ 1495  startx
+ 1496  raspi-config
+ 1497  apt-get install lightdm
+ 1498  vim minex.py 
+ 1499  startx
+ 1500  init 6
+ 1501  rspi-config
+ 1502  raspi-config
+ 1503  ls
+ 1504  ls -la
+ 1505  cat .xsession-errors
+ 1506  exit
+ 1507  ls -la
+ 1508  rm .xsession
+ 1509  cat .xsession-errors
+ 1510  rm test.jpg 
+ 1511  rm test2.jpg 
+ 1512  ls
+ 1513  ll
+ 1514  rm .xsession-errors
+ 1515  rm .xsession-errors.old 
+ 1516  ls
+ 1517  cd ..
+ 1518  ls
+ 1519  ls -la
+ 1520  cd pi
+ 1521  ls
+ 1522  ls -la
+ 1523  cat .xsession-errors 
+ 1524  ls -la
+ 1525  ls
+ 1526  ls -la
+ 1527  rm -rf opencv-4.1.2
+ 1528  ls
+ 1529  ls -la
+ 1530  ls -la *
+ 1531  ls -la
+ 1532  rm git_2.1.4-2.1+deb8u7_armhf.deb 
+ 1533  rm libopus0_1.1-2_armhf.deb 
+ 1534  rm libpython2.7-stdlib_2.7.9-2+deb8u5_armhf.deb 
+ 1535  ls
+ 1536  ls -la
+ 1537  rm img.jpg 
+ 1538  ls
+ 1539  ls -la
+ 1540  rm 4.1.2.tar.gz 
+ 1541  ls -la
+ 1542  cd ..
+ 1543  ls
+ 1544  ll
+ 1545  ls -la
+ 1546  cd 
+ 1547  ls
+ 1548  ls -la
+ 1549  pwd
+ 1550  cat .xsession-errors
+ 1551  cd /var/log
+ 1552  ls 
+ 1553  ls -la
+ 1554  tail -f Xorg.0.log
+ 1555  vim Xorg.0.log
+ 1556  ls -lrt
+ 1557  vim  Xorg.0.log
+ 1558  ls -lrt
+ 1559  vim user.log
+ 1560  ls -lrt
+ 1561  vim daemon.log
+ 1562  ls -lrt
+ 1563  vim syslog
+ 1564  startx
+ 1565  find / -name "*startx*"
+ 1566  raspi-config 
+ 1567  cd /data
+ 1568  ls
+ 1569  cd git
+ 1570  ls
+ 1571  git status
+ 1572  git add .
+ 1573  git push
+ 1574  ls
+ 1575  cd minex/
+ 1576  ls
+ 1577  raspistill -o test2.jpg
+ 1578  ls
+ 1579  rm test.jpg
+ 1580  rm test2.jpg
+ 1581  ls
+ 1582  vim minex.py 
+ 1583  python minex.py 
+ 1584  cd /var
+ 1585  ls
+ 1586  cd log
+ 1587  ls
+ 1588  ls -lrt
+ 1589  ls
+ 1590  cd /data/git/minex/
+ 1591  ls
+ 1592  vim minex.py 
+ 1593  python minex.py 
+ 1594  vim minex.py 
+ 1595  python minex.py 
+ 1596  vim minex.py 
+ 1597  python minex.py 
+ 1598  vim minex.py 
+ 1599  python minex.py 
+ 1600  vim minex.py 
+ 1601  python minex.py 
+ 1602  vim minex.py 
+ 1603  python minex.py 
+ 1604  vim minex.py 
+ 1605  python minex.py 
+ 1606  vim minex.py 
+ 1607  python
+ 1608  init 6
+ 1609  cd /data/git
+ 1610  cd minex/
+ 1611  ls
+ 1612  python minex.py 
+ 1613  vim minex.py 
+ 1614  python minex.py 
+ 1615  vim minex.py 
+ 1616  python minex.py 
+ 1617  vim minex.py 
+ 1618  python minex.py 
+ 1619  history
+ 1620  ls
+ 1621  raspistill -o test2.jpg
+ 1622  ls
+ 1623  rm test2.jpg 
+ 1624  python
+ 1625  python minex.py 
+ 1626  raspistill -o test2.jpg
+ 1627  ls
+ 1628  rm test2.jpg 
+ 1629  git add .
+ 1630  git push
+ 1631  ls /dev
+ 1632  init 6
+ 1633  vim minex.py 
+ 1634  python minex.py 
+ 1635  vim minex.py 
+ 1636  python minex.py 
+ 1637  vim minex.py 
+ 1638  python minex.py 
+ 1639  vim minex.py 
+ 1640  python minex.py 
+ 1641  vim minex.py 
+ 1642  python minex.py 
+ 1643  vim minex.py 
+ 1644  python minex.py 
+ 1645  vim minex.py 
+ 1646  python minex.py 
+ 1647  vim minex.py 
+ 1648  python minex.py 
+ 1649  vim minex.py 
+ 1650  python minex.py 
+ 1651  ls
+ 1652  cp minex.py  testmoto.py
+ 1653  ls
+ 1654  mv testmoto.py moto.py
+ 1655  vim moto.py 
+ 1656  ls
+ 1657  mv moto.py  dmoto.py
+ 1658  python dm
+ 1659  python dmoto.py 
+ 1660  vim moto.py 
+ 1661  vim dmoto.py 
+ 1662  python dmoto.py 
+ 1663  ls
+ 1664  python minex.py 
+ 1665  init 6
+ 1666  cd /data/git
+ 1667  ls
+ 1668  git status
+ 1669  git add .
+ 1670  git push
+ 1671  ls /dev
+ 1672  vim /etc/modules
+ 1673  ls
+ 1674  ls /etc
+ 1675  ls /etc/m*
+ 1676  vim /etc/modules-load.d/modules.conf 
+ 1677  ls
+ 1678  ls -l /dev/v*
+ 1679  vim /etc/modules
+ 1680  init 6
+ 1681  cd /daata
+ 1682  cd /data/git/minex/
+ 1683  ls
+ 1684  python minex.py 
+ 1685  ls
+ 1686  vim minex.py 
+ 1687  python minex.py 
+ 1688  init 0
+ 1689  cd /data/git/minex/
+ 1690  ls
+ 1691  python minex.py 
+ 1692  ls
+ 1693  vim minex.py 
+ 1694  ls
+ 1695  vim dmoto.py 
+ 1696  python dmoto.py 
+ 1697  vim dmoto.py 
+ 1698  python dmoto.py 
+ 1699  vim dmoto.py 
+ 1700  python dmoto.py 
+ 1701  vim dmoto.py 
+ 1702  python dmoto.py 
+ 1703  vim dmoto.py 
+ 1704  python dmoto.py 
+ 1705  vim dmoto.py 
+ 1706  python dmoto.py 
+ 1707  ls
+ 1708  vim minex.py 
+ 1709  ls
+ 1710  mv minex.py  dcam.py
+ 1711  vim dcam.py 
+ 1712  python dcam.py 
+ 1713  vim dcam.py 
+ 1714  python dcam.py 
+ 1715  vim dcam.py 
+ 1716  head -20 m
+ 1717  head mine.py -20
+ 1718  ls
+ 1719  git pull 
+ 1720  ls
+ 1721  vim minex.py
+ 1722  ls
+ 1723  vim minex.py
+ 1724  ls
+ 1725  vim minex.py
+ 1726  ls
+ 1727  python minex.py 
+ 1728  ls
+ 1729  python minex.py 
+ 1730  vim minex.py
+ 1731  python minex.py 
+ 1732  ls
+ 1733  vim dcam.py 
+ 1734  cat minex.py 
+ 1735  vim dcam.py 
+ 1736  python dcam.py 
+ 1737  vim dcam.py 
+ 1738  python dcam.py 
+ 1739  ls
+ 1740  sz *jpg
+ 1741  vim dcam.py 
+ 1742  python dcam.py 
+ 1743  ls
+ 1744  rm *jpg
+ 1745  ls
+ 1746  git status
+ 1747  git add .
+ 1748  git status
+ 1749  git push
+ 1750  git status
+ 1751  cd ..
+ 1752  git status
+ 1753  git commit -m "no lost"
+ 1754  git push
+ 1755  ls
+ 1756  cd minex/
+ 1757  ls
+ 1758  python dcam.py 
+ 1759  sz *jpg
+ 1760  ls
+ 1761  cd /
+ 1762  ls
+ 1763  cd 
+ 1764  ls
+ 1765  ls -la
+ 1766  grep py *
+ 1767  cd /etc
+ 1768  ls
+ 1769  grep disp *
+ 1770  grep display.py *
+ 1771  vim rc.local 
+ 1772  ls
+ 1773  crond -L
+ 1774  cron
+ 1775  cron -L
+ 1776  cron -l
+ 1777  cron
+ 1778  crontab -l
+ 1779  crontab -L
+ 1780  exit
+ 1781  cd /etc
+ 1782  ls
+ 1783  ls -lrt
+ 1784  vim rc.local 
+ 1785  cat /data/git/python/auto2wifi.py
+ 1786  ls
+ 1787  init 6
+ 1788  init 0
+ 1789  cd /data/git/
+ 1790  git status
+ 1791  cd minex/
+ 1792  ls
+ 1793  history
+ 1794  history|vim -
+ 1795  ls
+ 1796  motion
+ 1797  cd /var/lib/motion/
+ 1798  ls
+ 1799  rm *jpg
+ 1800  ls
+ 1801  ll
+ 1802  rm 01-20191125224636.avi 
+ 1803  motion
+ 1804  ls
+ 1805  rm *
+ 1806  ls
+ 1807  cd /data
+ 1808  ls
+ 1809  cd git
+ 1810  ls
+ 1811  cd minex/
+ 1812  ls
+ 1813  rm *jpg
+ 1814  ls
+ 1815  vim minex.py 
+ 1816  ls
+ 1817  vim minex.py 
+ 1818  python minex.py 
+ 1819  vim minex.py 
+ 1820  python minex.py 
+ 1821  vim minex.py 
+ 1822  python minex.py 
+ 1823  ls
+ 1824  cat minex.py 
+ 1825  ls
+ 1826  vim minex.py 
+ 1827  python minex.py 
+ 1828  ls
+ 1829  cat minex.py 
+ 1830  ls
+ 1831  cd ..
+ 1832  git add .
+ 1833  git commit -a "add some func"
+ 1834  git commit "add some func"
+ 1835  git commit -a"add some func"
+ 1836  git commit -a "add some func"
+ 1837  git commit -a 'add some func'
+ 1838  git push
+ 1839  history |grep comm
+ 1840  git commit -m 'add some func'
+ 1841  git push
+ 1842  cd /etc
+ 1843  ls
+ 1844  cd network/
+ 1845  ls
+ 1846  ls la
+ 1847  ls -la
+ 1848  cd ..
+ 1849  ls w*
+ 1850  cd
+ 1851  ls
+ 1852  ls -la
+ 1853  cd ..
+ 1854  ls
+ 1855  cd home
+ 1856  ls
+ 1857  cd pi
+ 1858  ls
+ 1859  ls -la
+ 1860  cd
+ 1861  ls -la
+ 1862  cd .pip
+ 1863  ls
+ 1864  cat pip.conf 
+ 1865  cd ..
+ 1866  ls
+ 1867  ls -la
+ 1868  cat .gitconfig 
+ 1869  cd .config/
+ 1870  ls
+ 1871  cd ..
+ 1872  ls
+ 1873  cd .cache/
+ 1874  ls
+ 1875  tree
+ 1876  cd ..
+ 1877  ls
+ 1878  ls -la
+ 1879  vim /ect/modules-load.d/rpi-camera.conf
+ 1880  ls
+ 1881  ls /etc
+ 1882  vim /etc/modules
+ 1883  :q
+ 1884  cat /etc/wpa_supplicant/wpa_supplicant.conf
+ 1885  ls
+ 1886  motion
+ 1887  cd /var/lib/motion/
+ 1888  ls
+ 1889  rm *
+ 1890  ls
+ 1891  cd /data
+ 1892  cd git
+ 1893  dir
+ 1894  cd minex/
+ 1895  ls
+ 1896  cd /data
+ 1897  ls
+ 1898  mkdir tmp
+ 1899  cd git
+ 1900  cd minex/
+ 1901  cp minex.py /data/tmp/
+ 1902  cd /data/tmp/
+ 1903  dir
+ 1904  vim minex.py 
+ 1905  raspi-config
+ 1906  cd /boot/
+ 1907  ls
+ 1908  vim config.txt
+ 1909  reboot
+ 1910  raspi-config 
+ 1911  cd /boot
+ 1912  ls
+ 1913  vim config.txt 
+ 1914  reboot
+ 1915  raspi-config 
+ 1916  ls
+ 1917  cd /data
+ 1918  #ls
+ 1919  cd tmp
+ 1920  ls
+ 1921  vim minex.py 
+ 1922  python minex.py 
+ 1923  startxd
+ 1924  find / -name X11
+ 1925  cd /usr/bin/X11
+ 1926  ls
+ 1927  raspi-config 
+ 1928  ls
+ 1929  ls t*
+ 1930  cd teamviewer/
+ 1931  ls
+ 1932  vim global.conf 
+ 1933  ls
+ 1934  cd ..
+ 1935  ls
+ 1936  vim rc.local 
+ 1937  ps -ef
+ 1938  ps -ef|grep te
+ 1939  service --statusall
+ 1940  service
+ 1941  service --status-all
+ 1942  ps -ef|grep team
+ 1943  cd /opt/teamviewer/
+ 1944  ls
+ 1945  apt-get list
+ 1946  apt-get
+ 1947  ps -ef|grep team
+ 1948  kill 527
+ 1949  ls
+ 1950  ps -ef|grep team
+ 1951  ls
+ 1952  reboot
+ 1953  kill 528
+ 1954  cd /etc
+ 1955  ls
+ 1956  grep team *
+ 1957  grep team * -r
+ 1958  apt-get uninstall teamviewer
+ 1959  apt-get
+ 1960  apt-get remove teamviewer
+ 1961  reboot
+ 1962  ls -la
+ 1963  apt-get atuoremove teamviewer
+ 1964  apt-get
+ 1965  apt-get remove teamviewer
+ 1966  dpkg
+ 1967  dpkg --help
+ 1968  dpkg -r teamviewer
+ 1969  find / -name *team*
+ 1970  vim /var/log/teamviewer13/install_teamviewerd.log
+ 1971  chk-cofnig
+ 1972  chkconfig
+ 1973  find / -name *team*
+ 1974  systemctl
+ 1975  systemctl --help
+ 1976  ls
+ 1977  cd /etc/
+ 1978  ls
+ 1979  ls t*
+ 1980  cd teamviewer/
+ 1981  ls
+ 1982  vim global.conf 
+ 1983  reboot
+ 1984  find / -name *teamv*
+ 1985  ls
+ 1986  wget https://download.teamviewer.com/download/linux/teamviewer_amd64.deb
+ 1987  ls
+ 1988  dpkg -i teamviewer_amd64.deb 
+ 1989  wget https://download.teamviewer.com/download/linux/teamviewer_i386.deb
+ 1990  dpkg -i teamviewer_i386.deb 
+ 1991  ls
+ 1992  rm teamviewer_*
+ 1993  ls
+ 1994  systemctl
+ 1995  systemctl|grep team
+ 1996  ststemctl disable teamviewerd.service
+ 1997  systemctl disable teamviewerd.service
+ 1998  reboot
+ 1999  cd /
+ 2000  ls
+ 2001  cd data
+ 2002  cd git
+ 2003  ls
+ 2004  history > historycmd.txt
