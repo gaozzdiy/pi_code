@@ -1,5 +1,6 @@
-import cv2
+import getopt, sys
 import time
+import cv2
 import RPi.GPIO as GPIO
 
 LINE_Y = 400
@@ -15,30 +16,20 @@ MOTOB = 38
 RAILA = 35
 RAILB = 37
 
-GPIO.setmode(GPIO.BOARD)
-GPIO.setup(MOTOA,GPIO.OUT)
-GPIO.setup(MOTOB,GPIO.OUT)
-GPIO.setup(RAILA,GPIO.IN)
-GPIO.setup(RAILB,GPIO.IN)
 
 #motor driver
 def moto(pos,col):
     left,right = checkborder()
-    if left == 1 or right == 1:
-        GPIO.output(MOTOB, GPIO.HIGH)
-        GPIO.output(MOTOA, GPIO.HIGH)
-        return
-    
-    if pos < col/2 - ADJ_MOTO_VAL and pos > 0 :
+    if pos < col/2 - ADJ_MOTO_VAL and pos > 0 and right != 1:
         motoright()
-        print("moto: go left")
-    elif pos > col/2 + ADJ_MOTO_VAL and pos < col :
+    elif pos > col/2 + ADJ_MOTO_VAL and pos < col and left != 1:
         motoleft()
-        print("moto: go right")
-    else :
+    elif pos > col/2 - ADJ_MOTO_VAL and pos < col/2 + ADJ_MOTO_VAL:
         motostop()
-        print("moto: no move")
+    else :
+        print("other unknow status:(left,right,pos)",left,right,pos)
     #time.sleep(0.2)
+    return
 
 def motoleft():
     GPIO.output(MOTOB, GPIO.LOW)
@@ -56,8 +47,8 @@ def motostop():
     return
 
 def checkborder():
-    left = GPIO.input(35)
-    right = GPIO.input(37)
+    left = GPIO.input(RAILA)
+    right = GPIO.input(RAILB)
     return left,right
     
 
@@ -75,23 +66,14 @@ def imgtrans(img):
     #print(row,col)
     return img,thresh,col
 
-cma = cv2.VideoCapture(0)
-while(cma.isOpened()):
-    #print("start:",time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()))
-    ret, img = cma.read()
+def getpos(img):
     img,edged,col = imgtrans(img)
-
     dest = edged[LINE_Y - FETCH_LINE:LINE_Y + FETCH_LINE,0:col]
     brdest = img[LINE_Y - FETCH_LINE:LINE_Y + FETCH_LINE,0:col]
-    #print("~~~~~~~~~~~~~~~~~~~~~~~~~~~")
-    #print("dest:",brdest[0])
-    #print("~~~~~~~~~~~~~~~~~~~~~~~~~~~")
-    #print("edged",dest[0])
-    #print("~~~~~~~~~~~~~~~~~~~~~~~~~~~")
-
+    
     i = FETCH_COL
     cnt = 0
-    post = 0
+    pos = 0
     while i < col - FETCH_COL:
         ii, befor_val, after_val = 1, 0, 0
         while ii <= FETCH_COL:
@@ -99,11 +81,29 @@ while(cma.isOpened()):
             after_val = after_val + dest[0][i+ii]
             ii = ii + 1
         if befor_val / FETCH_COL == 255 and after_val / FETCH_COL == 0:
-            post = i
+            pos = i
             print("the point: ",i)
         i = i + 1
-    #print("check:",time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()))
-    #cv2.imwrite('edgedimg.jpg',edged)
-    moto(post,col)
-    print(post,col)
-    #time.sleep(1.2)
+        #print("check:",time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()))
+        #cv2.imwrite('edgedimg.jpg',edged)
+    return pos,col
+
+def main():
+    GPIO.setmode(GPIO.BOARD)
+    GPIO.setup(MOTOA,GPIO.OUT)
+    GPIO.setup(MOTOB,GPIO.OUT)
+    GPIO.setup(RAILA,GPIO.IN)
+    GPIO.setup(RAILB,GPIO.IN)
+    try:
+        cma = cv2.VideoCapture(0)
+        while(cma.isOpened()):
+            ret, img = cma.read()
+            pos, col = getpos(img)
+            moto(pos,col)
+            #print(pos,col)
+            #time.sleep(1.2)
+    finally:
+        motostop()
+
+if __name__ == "__main__":
+    sys.exit(main())

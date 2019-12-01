@@ -32,13 +32,16 @@ def edaged():
     if left == 1 or right == 1:
        GPIO.output(MOTOB, GPIO.HIGH) 
        GPIO.output(MOTOA, GPIO.HIGH) 
+    else :
+       GPIO.output(MOTOB, GPIO.LOW) 
+       GPIO.output(MOTOA, GPIO.HIGH) 
 
 
 
 moto(300,400)
 while(1):
     edaged()
-    time.sleep(0.1)
+    time.sleep(0.3)
 #moto(0,400)
 #time.sleep(0.5)
 #moto(301,400)
