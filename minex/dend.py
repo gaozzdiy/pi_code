@@ -25,10 +25,22 @@ def moto(x,col):
        GPIO.output(MOTOB, GPIO.HIGH) 
        GPIO.output(MOTOA, GPIO.HIGH) 
 
+def edaged():
+    left = GPIO.input(35)
+    right = GPIO.input(37)
+    print(left,right)
+    if left == 1 or right == 1:
+       GPIO.output(MOTOB, GPIO.HIGH) 
+       GPIO.output(MOTOA, GPIO.HIGH) 
+
+
+
 moto(300,400)
-time.sleep(0.5)
+while(1):
+    edaged()
+    time.sleep(0.1)
 #moto(0,400)
 #time.sleep(0.5)
 #moto(301,400)
 #time.sleep(1)
-moto(200,400)
+#moto(200,400)

@@ -6,7 +6,6 @@ LINE_Y = 400
 BR_VAL = 70
 ADJ_MOTO_VAL = 3
 FETCH_LINE = 2
-FETCH_COL = 5
 
 
 MOTOA = 36
@@ -23,13 +22,6 @@ GPIO.setup(RAILB,GPIO.IN)
 
 #motor driver
 def moto(x,col):
-    left = GPIO.input(35)
-    right = GPIO.input(37)
-    if left == 1 or right == 1:
-       GPIO.output(MOTOB, GPIO.HIGH)
-       GPIO.output(MOTOA, GPIO.HIGH)
-       return
-    
     if x < col/2 - ADJ_MOTO_VAL and x > 0 :
        GPIO.output(MOTOA, GPIO.LOW)
        GPIO.output(MOTOB, GPIO.HIGH)
@@ -52,11 +44,10 @@ def imgtrans(img):
     img = cv2.GaussianBlur(img,(5,5),3,3)
     img = cv2.GaussianBlur(img,(5,5),3,3)
     img = cv2.GaussianBlur(img,(5,5),3,3)
-    #edged = cv2.Canny(img,10,3)
-    ret,thresh = cv2.threshold(img,BR_VAL,255,0)
+    edged = cv2.Canny(img,10,3)
     row,col = img.shape
     #print(row,col)
-    return img,thresh,col
+    return img,edged,col
 
 cma = cv2.VideoCapture(0)
 while(cma.isOpened()):
@@ -72,29 +63,22 @@ while(cma.isOpened()):
     #print("edged",dest[0])
     #print("~~~~~~~~~~~~~~~~~~~~~~~~~~~")
 
-    i = FETCH_COL
+    i = 0
     cnt = 0
     post = 0
-    while i < col - FETCH_COL:
-        ii, befor_val, after_val = 1, 0, 0
-        #while ii < FETCH_LINE * 2:
-        #    edagedval = edagedval + dest[ii][i]
-        #    brightval = brightval + brdest[ii][i]
-        #    ii = ii + 1
-        #print("per pix:",dest[0][i],brdest[0][i])
-        while ii <= FETCH_COL:
-            befor_val = befor_val + dest[0][i-ii]
-            after_val = after_val + dest[0][i+ii]
+    while i < col:
+        ii, edagedval, brightval = 0, 0, 0
+        while ii < FETCH_LINE * 2:
+            edagedval = edagedval + dest[ii][i]
+            brightval = brightval + brdest[ii][i]
             ii = ii + 1
-        if befor_val / FETCH_COL == 255 and after_val / FETCH_COL == 0:
+        #print("per pix:",dest[0][i],brdest[0][i])
+        if edagedval/(FETCH_LINE * 2) > 255/FETCH_LINE and brightval/(FETCH_LINE * 2) > BR_VAL:
+            #if dest[0][i] > 200 and brdest[0][i] > BR_VAL/2:
+            print("the point: ",i,brdest[0][i])
             post = i
-            print("the point: ",i)
-        #if edagedval/(FETCH_LINE * 2) > 255/FETCH_LINE and brightval/(FETCH_LINE * 2) > BR_VAL:
-        #    #if dest[0][i] > 200 and brdest[0][i] > BR_VAL/2:
-        #    print("the point: ",i,brdest[0][i])
-        #    post = i
-        #    cnt = cnt + 1
-        #    #circle(img,(i,LINE_Y),3,(0,255,0))
+            cnt = cnt + 1
+            #circle(img,(i,LINE_Y),3,(0,255,0))
         i = i + 1
     #print("check:",time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()))
     moto(post,col)
