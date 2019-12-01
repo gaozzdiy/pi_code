@@ -25,7 +25,7 @@ def moto(x,col):
        GPIO.output(MOTOB, GPIO.HIGH) 
        GPIO.output(MOTOA, GPIO.HIGH) 
 
-moto(300,400)
+moto(100,400)
 time.sleep(0.5)
 #moto(0,400)
 #time.sleep(0.5)

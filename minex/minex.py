@@ -4,7 +4,7 @@ import RPi.GPIO as GPIO
 
 LINE_Y = 400
 BR_VAL = 70
-ADJ_MOTO_VAL = 3
+ADJ_MOTO_VAL = 20
 FETCH_LINE = 2
 FETCH_COL = 5
 
@@ -22,27 +22,44 @@ GPIO.setup(RAILA,GPIO.IN)
 GPIO.setup(RAILB,GPIO.IN)
 
 #motor driver
-def moto(x,col):
+def moto(pos,col):
+    left,right = checkborder()
+    if left == 1 or right == 1:
+        GPIO.output(MOTOB, GPIO.HIGH)
+        GPIO.output(MOTOA, GPIO.HIGH)
+        return
+    
+    if pos < col/2 - ADJ_MOTO_VAL and pos > 0 :
+        motoright()
+        print("moto: go left")
+    elif pos > col/2 + ADJ_MOTO_VAL and pos < col :
+        motoleft()
+        print("moto: go right")
+    else :
+        motostop()
+        print("moto: no move")
+    #time.sleep(0.2)
+
+def motoleft():
+    GPIO.output(MOTOB, GPIO.LOW)
+    GPIO.output(MOTOA, GPIO.HIGH)
+    return
+
+def motoright():
+    GPIO.output(MOTOA, GPIO.LOW)
+    GPIO.output(MOTOB, GPIO.HIGH)
+    return
+
+def motostop():
+    GPIO.output(MOTOB, GPIO.HIGH)
+    GPIO.output(MOTOA, GPIO.HIGH)
+    return
+
+def checkborder():
     left = GPIO.input(35)
     right = GPIO.input(37)
-    if left == 1 or right == 1:
-       GPIO.output(MOTOB, GPIO.HIGH)
-       GPIO.output(MOTOA, GPIO.HIGH)
-       return
+    return left,right
     
-    if x < col/2 - ADJ_MOTO_VAL and x > 0 :
-       GPIO.output(MOTOA, GPIO.LOW)
-       GPIO.output(MOTOB, GPIO.HIGH)
-       print("turn left")
-    elif x > col/2 + ADJ_MOTO_VAL and x < col :
-       GPIO.output(MOTOB, GPIO.LOW)
-       GPIO.output(MOTOA, GPIO.HIGH)
-       print("turn right")
-    else :
-       GPIO.output(MOTOB, GPIO.HIGH)
-       GPIO.output(MOTOA, GPIO.HIGH)
-       print("no move")
-    #time.sleep(0.2)
 
 #graph trans
 def imgtrans(img):
@@ -77,11 +94,6 @@ while(cma.isOpened()):
     post = 0
     while i < col - FETCH_COL:
         ii, befor_val, after_val = 1, 0, 0
-        #while ii < FETCH_LINE * 2:
-        #    edagedval = edagedval + dest[ii][i]
-        #    brightval = brightval + brdest[ii][i]
-        #    ii = ii + 1
-        #print("per pix:",dest[0][i],brdest[0][i])
         while ii <= FETCH_COL:
             befor_val = befor_val + dest[0][i-ii]
             after_val = after_val + dest[0][i+ii]
@@ -89,14 +101,9 @@ while(cma.isOpened()):
         if befor_val / FETCH_COL == 255 and after_val / FETCH_COL == 0:
             post = i
             print("the point: ",i)
-        #if edagedval/(FETCH_LINE * 2) > 255/FETCH_LINE and brightval/(FETCH_LINE * 2) > BR_VAL:
-        #    #if dest[0][i] > 200 and brdest[0][i] > BR_VAL/2:
-        #    print("the point: ",i,brdest[0][i])
-        #    post = i
-        #    cnt = cnt + 1
-        #    #circle(img,(i,LINE_Y),3,(0,255,0))
         i = i + 1
     #print("check:",time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()))
+    #cv2.imwrite('edgedimg.jpg',edged)
     moto(post,col)
     print(post,col)
-    #time.sleep(0.2)
+    #time.sleep(1.2)
