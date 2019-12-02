@@ -3,7 +3,7 @@ import time
 import cv2
 import RPi.GPIO as GPIO
 
-LINE_Y = 400
+LINE_Y = 280
 BR_VAL = 70
 ADJ_MOTO_VAL = 20
 FETCH_LINE = 2
@@ -22,21 +22,27 @@ def moto(pos,col):
     left,right = checkborder()
     if pos < col/2 - ADJ_MOTO_VAL and pos > 0 and right != 1:
         motoright()
+        #print("moto: right~~~~ pos ,col,ADJ_MOTO_VAL",pos,col,ADJ_MOTO_VAL)
+        print("moto: right~~~~ pos ,col/2 - ADJ_MOTO_VAL",pos,col/2-ADJ_MOTO_VAL)
     elif pos > col/2 + ADJ_MOTO_VAL and pos < col and left != 1:
         motoleft()
+        #print("moto: left ~~~~ pos ,col,ADJ_MOTO_VAL",pos,col,ADJ_MOTO_VAL)
+        print("moto: left ~~~~ pos ,col/2 + ADJ_MOTO_VAL",pos,col/2+ADJ_MOTO_VAL)
     elif pos > col/2 - ADJ_MOTO_VAL and pos < col/2 + ADJ_MOTO_VAL:
         motostop()
+        print("moto: in the pos")
     else :
+        motostop()
         print("other unknow status:(left,right,pos)",left,right,pos)
     #time.sleep(0.2)
     return
 
-def motoleft():
+def motoright():
     GPIO.output(MOTOB, GPIO.LOW)
     GPIO.output(MOTOA, GPIO.HIGH)
     return
 
-def motoright():
+def motoleft():
     GPIO.output(MOTOA, GPIO.LOW)
     GPIO.output(MOTOB, GPIO.HIGH)
     return
@@ -82,7 +88,7 @@ def getpos(img):
             ii = ii + 1
         if befor_val / FETCH_COL == 255 and after_val / FETCH_COL == 0:
             pos = i
-            print("the point: ",i)
+            #print("the point: ",i)
         i = i + 1
         #print("check:",time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()))
         #cv2.imwrite('edgedimg.jpg',edged)
@@ -98,10 +104,15 @@ def main():
         cma = cv2.VideoCapture(0)
         while(cma.isOpened()):
             ret, img = cma.read()
+            ret, img = cma.read()
+            ret, img = cma.read()
+            ret, img = cma.read()
+            ret, img = cma.read()
             pos, col = getpos(img)
+            print("pos, col =",pos,col)
             moto(pos,col)
             #print(pos,col)
-            #time.sleep(1.2)
+            #time.sleep(0.1)
     finally:
         motostop()
 
