@@ -20,14 +20,15 @@ RAILB = 37
 #motor driver
 def moto(pos,col):
     left,right = checkborder()
-    if pos < col/2 - ADJ_MOTO_VAL and pos > 0 and right != 1:
-        motoright()
-        #print("moto: right~~~~ pos ,col,ADJ_MOTO_VAL",pos,col,ADJ_MOTO_VAL)
-        print("moto: right~~~~ pos ,col/2 - ADJ_MOTO_VAL",pos,col/2-ADJ_MOTO_VAL)
-    elif pos > col/2 + ADJ_MOTO_VAL and pos < col and left != 1:
+    print("end : left,right=",left,right)
+    if pos < col/2 - ADJ_MOTO_VAL and pos > 0 and left == 0:
         motoleft()
+        #print("moto: right~~~~ pos ,col,ADJ_MOTO_VAL",pos,col,ADJ_MOTO_VAL)
+        print("moto: left~~~~ pos ,col/2 - ADJ_MOTO_VAL",pos,col/2-ADJ_MOTO_VAL)
+    elif pos > col/2 + ADJ_MOTO_VAL and pos < col and right == 0:
+        motoright()
         #print("moto: left ~~~~ pos ,col,ADJ_MOTO_VAL",pos,col,ADJ_MOTO_VAL)
-        print("moto: left ~~~~ pos ,col/2 + ADJ_MOTO_VAL",pos,col/2+ADJ_MOTO_VAL)
+        print("moto: right ~~~~ pos ,col/2 + ADJ_MOTO_VAL",pos,col/2+ADJ_MOTO_VAL)
     elif pos > col/2 - ADJ_MOTO_VAL and pos < col/2 + ADJ_MOTO_VAL:
         motostop()
         print("moto: in the pos")
@@ -38,13 +39,13 @@ def moto(pos,col):
     return
 
 def motoright():
-    GPIO.output(MOTOB, GPIO.LOW)
-    GPIO.output(MOTOA, GPIO.HIGH)
+    GPIO.output(MOTOB, GPIO.HIGH)
+    GPIO.output(MOTOA, GPIO.LOW)
     return
 
 def motoleft():
-    GPIO.output(MOTOA, GPIO.LOW)
-    GPIO.output(MOTOB, GPIO.HIGH)
+    GPIO.output(MOTOA, GPIO.HIGH)
+    GPIO.output(MOTOB, GPIO.LOW)
     return
 
 def motostop():
@@ -53,8 +54,8 @@ def motostop():
     return
 
 def checkborder():
-    left = GPIO.input(RAILA)
-    right = GPIO.input(RAILB)
+    left = GPIO.input(RAILB)
+    right = GPIO.input(RAILA)
     return left,right
     
 
