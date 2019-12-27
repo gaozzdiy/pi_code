@@ -2,6 +2,8 @@ import getopt, sys
 import time
 import cv2
 import RPi.GPIO as GPIO
+import threading
+import socket
 
 LINE_Y = 280
 BR_VAL = 70
@@ -92,10 +94,10 @@ def getpos(img):
             #print("the point: ",i)
         i = i + 1
         #print("check:",time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()))
-        #cv2.imwrite('edgedimg.jpg',edged)
     return pos,col
 
-def main():
+def rundev():
+    GPIO.setwarnings(False)
     GPIO.setmode(GPIO.BOARD)
     GPIO.setup(MOTOA,GPIO.OUT)
     GPIO.setup(MOTOB,GPIO.OUT)
@@ -104,18 +106,68 @@ def main():
     try:
         cma = cv2.VideoCapture(0)
         while(cma.isOpened()):
-            ret, img = cma.read()
-            ret, img = cma.read()
-            ret, img = cma.read()
-            ret, img = cma.read()
+            cma.read()
             ret, img = cma.read()
             pos, col = getpos(img)
             print("pos, col =",pos,col)
             moto(pos,col)
             #print(pos,col)
             #time.sleep(0.1)
+    except Exception as e:
+        print(e)
     finally:
         motostop()
 
+
+def runCommand(conn, command):
+    print(command)
+
+
+def runServ():
+    global STAT
+    address = ('0.0.0.0', 8004)
+    print("init server! SERV=", address)
+    serv = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    serv.bind(address)
+    serv.listen(5)
+    while True:
+        try:
+            conn, addr = serv.accept()
+            while True:
+                print('connect from:' + str(addr))
+                newbuf = conn.recv(1024)
+                if newbuf.decode() == "exit":
+                    conn.send(newbuf)
+                    print("send finish, exit.")
+                    break
+                elif not newbuf:
+                    break
+                else:
+                    run_command(conn, newbuf.decode())
+                    break
+            conn.close()
+        except Exception as e:
+            print(e)
+
+
+def create_thread():
+    try:
+        print("create thread for running:")
+        t_main = threading.Thread(target=rundev)
+        t_main.daemon = 1
+        t_main.start()
+        t_serv = threading.Thread(target=runServ)
+        t_serv.daemon = 1
+        t_serv.start()
+        while True:
+            time.sleep(5)
+    except Exception as e:
+        print(e)
+        print("have except, exit anyway!")
+    finally:
+        motostop()
+
+
 if __name__ == "__main__":
-    sys.exit(main())
+    print("initing!")
+    sys.exit(create_thread())

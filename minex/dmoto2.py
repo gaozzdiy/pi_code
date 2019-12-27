@@ -71,7 +71,7 @@ def main():
             print("pos, col =",pos,col)
             moto(pos,col)
             #print(pos,col)
-            time.sleep(0.2)
+            time.sleep(1)
             motostop()
     finally:
         motostop()
