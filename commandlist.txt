@@ -1,0 +1,13 @@
+查询wifi信息，wifi强度
+
+
+# iwconfig wlan0 | grep -i --color quality   //查询网络连接质量
+    Link Quality=47/70  Signal level=-63 dBm 
+ 
+# iwconfig wlan0 | grep -i --color signal    //查询信号强度
+    Link Quality=44/70  Signal level=-66 dBm
+ 
+# iwconfig wlan0
+# iwlist wlan0 scan
+# iw dev wlan0 scan
+# wpa_cli scan_results
